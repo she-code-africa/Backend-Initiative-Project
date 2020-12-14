@@ -7,6 +7,6 @@ No database involved, just a server.
 
 The endpoints will be for Users, Movies, Rentals.
 
-Submission: Publish the APIs with Postman and share this too, do not forgte to include the link to the your level one task branch.
+Submission: Publish the APIs with Postman and share this too, do not forget to include the link to your level one task branch.
 
 Reviews will be done on Saturdays.
