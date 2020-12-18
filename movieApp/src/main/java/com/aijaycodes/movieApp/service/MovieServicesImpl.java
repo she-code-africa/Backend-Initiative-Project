@@ -69,10 +69,20 @@ public class MovieServicesImpl implements MovieService {
 				}else {
 					movies.get(i).setTitle(data.getTitle());
 				}
-				if(data.getYear() == null || data.getYear() == "") {
+				if(data.getYearOfProduction() == null || data.getYearOfProduction() == "") {
 					System.out.println("year not modified");
 				}else{
-					movies.get(i).setYear(data.getYear());
+					movies.get(i).setYearOfProduction(data.getYearOfProduction());
+				}
+				if(data.getGenre() == null || data.getGenre() == "") {
+					System.out.println("genre not modified");
+				}else{
+					movies.get(i).setGenre(data.getGenre());
+				}
+				if(data.getLength() == null || data.getLength() == "") {
+					System.out.println("length not modified");
+				}else{
+					movies.get(i).setLength(data.getLength());
 				}
 				
 			}
@@ -176,7 +186,7 @@ public class MovieServicesImpl implements MovieService {
 		return response;
 	}
 	
-	public Object deleteMovie(int id) {
+	public Object deleteMovie(String id) {
 		
 		for(int i = 0; i < movies.size(); i++) {
 			if (movies.get(i).getId() == id) {
@@ -202,7 +212,7 @@ public class MovieServicesImpl implements MovieService {
 		return response;
 	}
 	
-	public Object deleteRating(int id) {
+	public Object deleteRating(String id) {
 		
 		for(int i = 0; i < ratings.size(); i++) {
 			if (ratings.get(i).getRatingsId() == id) {
@@ -214,7 +224,7 @@ public class MovieServicesImpl implements MovieService {
 		response.setMessage("Rating Deleted");
 		return response;
 	}
-	public Object deleteRentals(int id) {
+	public Object deleteRentals(String id) {
 		
 		for(int i = 0; i < rentals.size(); i++) {
 			if (rentals.get(i).getRentalId() == id) {

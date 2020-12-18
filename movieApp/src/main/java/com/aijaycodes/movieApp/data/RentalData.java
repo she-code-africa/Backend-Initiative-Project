@@ -2,7 +2,7 @@ package com.aijaycodes.movieApp.data;
 
 public class RentalData {
 	
-	int rentalId;
+	String rentalId;
 	
 	String movieId;
 	
@@ -10,11 +10,11 @@ public class RentalData {
 	
 	String date;
 
-	public int getRentalId() {
+	public String getRentalId() {
 		return rentalId;
 	}
 
-	public void setRentalId(int rentalId) {
+	public void setRentalId(String rentalId) {
 		this.rentalId = rentalId;
 	}
 

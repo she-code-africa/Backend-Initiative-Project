@@ -18,13 +18,13 @@ public interface MovieService {
 	 
 	 List<MovieData> getMovies();
 	 
-	 Object deleteRentals(int id);
+	 Object deleteRentals(String id);
 
-	 Object deleteRating(int id);
+	 Object deleteRating(String id);
 	 
 	 Object deleteUser(String id);
 	 
-	 Object deleteMovie(int id);
+	 Object deleteMovie(String id);
 	 
 	 Object updateUser(UserData data);
 	 

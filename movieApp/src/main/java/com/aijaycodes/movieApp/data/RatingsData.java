@@ -2,7 +2,7 @@ package com.aijaycodes.movieApp.data;
 
 public class RatingsData {
 
-	int ratingsId;
+	String ratingsId;
 	
 	String movieId;
 	
@@ -10,11 +10,11 @@ public class RatingsData {
 	
 	String rating;
 
-	public int getRatingsId() {
+	public String getRatingsId() {
 		return ratingsId;
 	}
 
-	public void setRatingsId(int ratingsId) {
+	public void setRatingsId(String ratingsId) {
 		this.ratingsId = ratingsId;
 	}
 

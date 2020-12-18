@@ -63,22 +63,22 @@ public class MovieController {
 	 }
 	
 	@PostMapping("/deleteRental/{rentalId}")
-	public Object deleteRental(@PathParam("rentalId") int id) {
+	public Object deleteRental(@PathVariable("rentalId") String id) {
 		
 		return service.deleteRentals(id);
 		
 	}
 	
 	@PostMapping("/deleteRating/{ratingId}")
-	public Object deleteRating(@PathParam("ratingId") int id) {
+	public Object deleteRating(@PathVariable("ratingId") String id) {
 		
 		return service.deleteRating(id);
 		
 	}
 	
 	
-	@PostMapping("/deleteMove/{movieId}")
-	public Object deleteMovie(@PathParam("movieId") int id) {
+	@PostMapping("/deleteMovie/{movieId}")
+	public Object deleteMovie(@PathVariable("movieId") String id) {
 		
 		return service.deleteMovie(id);
 		
