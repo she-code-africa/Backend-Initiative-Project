@@ -6,7 +6,7 @@ public class MovieData {
 	
 	String title;
 	
-	String ratings;
+	//String ratings;
 	
 	String year;
 	
@@ -28,13 +28,11 @@ public class MovieData {
 		this.title = title;
 	}
 
-	public String getRatings() {
-		return ratings;
-	}
-
-	public void setRatings(String ratings) {
-		this.ratings = ratings;
-	}
+	/*
+	 * public String getRatings() { return ratings; }
+	 * 
+	 * public void setRatings(String ratings) { this.ratings = ratings; }
+	 */
 
 	public String getYear() {
 		return year;
