@@ -3,6 +3,7 @@ from .models import Rentals, Movies
 from .serializers import MoviesSerializer, RentalsSerializer, UserSerializer
 from django.contrib.auth.models import User
 
+
 class MovieViewset(viewsets.ModelViewSet):
 	queryset=Movies.objects.all()
 	serializer_class=MoviesSerializer

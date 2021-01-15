@@ -1,4 +1,4 @@
-from MusicApi.ViewSet import MovieViewset,  RentalsViewset, UsersViewset
+from musicapiii.ViewSet import MovieViewset,  RentalsViewset, UsersViewset
 from rest_framework import routers
 
 router=routers.DefaultRouter()
