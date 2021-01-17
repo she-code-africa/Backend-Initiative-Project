@@ -1,0 +1,37 @@
+[
+    {
+      "rentId": 1,
+      "Owner": "Krish",
+      "Leaser": "Lee",
+      "phoneNumber": "123456",
+      "emailAddress": "krish.lee@learningcontainer.com"
+    },
+    {
+      "rentId": 2,
+      "Owner": "racks",
+      "Leaser": "jacson",
+      "phoneNumber": "123456",
+      "emailAddress": "racks.jacson@learningcontainer.com"
+    },
+    {
+      "rentId": 3,
+      "Owner": "denial",
+      "Leaser": "roast",
+      "phoneNumber": "33333333",
+      "emailAddress": "denial.roast@learningcontainer.com"
+    },
+    {
+      "rentId": 4,
+      "Owner": "devid",
+      "Leaser": "neo",
+      "phoneNumber": "222222222",
+      "emailAddress": "devid.neo@learningcontainer.com"
+    },
+    {
+      "rentId": 5,
+      "Owner": "jone",
+      "Leaser": "mac",
+      "phoneNumber": "111111111",
+      "emailAddress": "jone.mac@learningcontainer.com"
+    }
+  ]
