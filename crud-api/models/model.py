@@ -1,8 +1,9 @@
+
 from pydantic import BaseModel
 from typing import Optional
 
 
-class User(BaseModel):
+class Users(BaseModel):
     userId: int
     firstName:  str
     lastName:  str
@@ -16,7 +17,7 @@ class Movies (BaseModel):
     id:  str
 
 
-class Rental(BaseModel):
+class Rentals(BaseModel):
     rentId: int
     Owner:  str
     Leaser:  str

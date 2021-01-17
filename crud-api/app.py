@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 import json
 import uvicorn
-
+from models.model import Rentals, Users, Movies
 # Init
 app = FastAPI()
 
@@ -33,7 +33,36 @@ async def allUsers():
 async def allRentals():
     return [rental for rental in rentals]
 
-# CREATE
-@app.post('/rentals/{id}')
-async def createRentals():
-     pass
+# 2  CREATE
+
+
+@app.post('/addRentals/')
+async def create_rental(rental: Rentals):
+    return rental
+
+
+@app.post('/addUsers/')
+async def create_user(user: Users):
+    return user
+
+
+@app.post('/addMovies/')
+async def create_movie(movie: Movies):
+    return movie
+
+# 3. UPDATE
+
+
+@app.put('/updateUsers')
+async def update_user(parameter_list):
+    pass
+
+
+@app.put('/updateRentals')
+async def update_rental(parameter_list):
+    pass
+
+
+@app.put('/updateMovies')
+async def update_movies(parameter_list):
+    pass
