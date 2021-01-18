@@ -38,16 +38,31 @@ async def allRentals():
 
 @app.post('/addRentals/')
 async def create_rental(rental: Rentals):
+    json_object = json.dumps(rental, indent=4)
+
+# Writing to sample.json
+    with open("rentals.json", "w") as outfile:
+        outfile.write(json_object)
     return rental
 
 
 @app.post('/addUsers/')
 async def create_user(user: Users):
+    json_object = json.dumps(user, indent=4)
+
+# Writing to sample.json
+    with open("users.json", "w") as outfile:
+        outfile.write(json_object)
     return user
 
 
 @app.post('/addMovies/')
 async def create_movie(movie: Movies):
+    json_object = json.dumps(movie, indent=4)
+
+# Writing to sample.json
+    with open("movies.json", "w") as outfile:
+        outfile.write(json_object)
     return movie
 
 # 3. UPDATE
