@@ -1,4 +1,3 @@
-
 from pydantic import BaseModel
 from typing import Optional
 
@@ -14,12 +13,12 @@ class Users(BaseModel):
 class Movies (BaseModel):
     title:  str
     rank:  int
-    id:  str
+    titleId:  int
 
 
 class Rentals(BaseModel):
     rentId: int
     Owner:  str
-    Leaser:  str
+    Leasee:  str
     phoneNumber:  Optional[str] = None
     emailAddress: str
