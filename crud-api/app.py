@@ -127,6 +127,7 @@ async def update_rental(rentalid: int, rental: Rentals):
 
 # 5. DELETE USER
 
+
 def delete_json(filename, value, json_id, value_id):
     with open(filename) as json_file:
         data = json.load(json_file)
@@ -148,7 +149,7 @@ async def delete_movie(movieid: int):
 
 @app.delete("/delUsers/{userid}")
 async def delete_user(userid: int):
-    return delete_json("d ata/users.json", "users", "userId", userid)
+    return delete_json("data/users.json", "users", "userId", userid)
 
 
 @app.delete("/delRentals/{rentalid}")
