@@ -1,26 +1,6 @@
 {
     "movies": [
         {
-            "title": "The Shawshank Redemption",
-            "rank": "1",
-            "movieId": 22
-        },
-        {
-            "title": "The Godfather",
-            "rank": "2",
-            "movieId": 55
-        },
-        {
-            "title": "The Godfather: Part II",
-            "rank": "3",
-            "movieId": 12
-        },
-        {
-            "title": "Pulp Fiction",
-            "rank": "4",
-            "movieId": 21
-        },
-        {
             "title": "The Good, the Bad and the Ugly",
             "rank": "5",
             "movieId": 54
@@ -49,11 +29,6 @@
             "title": "Fight Club",
             "rank": "10",
             "movieId": 31
-        },
-        {
-            "title": "The End of Them",
-            "rank": 12,
-            "movieId": 16
         }
     ]
 }
