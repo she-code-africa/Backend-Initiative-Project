@@ -1,4 +1,5 @@
 {
  "prettier.useTabs": true,
- "prettier.tabWidth": 5
+ "prettier.tabWidth": 5,
+ "python.formatting.provider": "black"
 }

@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 import json
+from fastapi.encoders import jsonable_encoder
 import uvicorn
 from models.model import Rentals, Users, Movies
 # Init
@@ -66,18 +67,51 @@ async def create_users(user: Users):
 # 3. PUT
 
 
-def update_json(filename, value, req_body):
+def update_json1(filename, value, req_body, check_id, json_id):
     with open(filename) as json_file:
         data = json.load(json_file)
         temp = data[str(value)]
-        # appending data to emp_details
-        temp.append(req_body.dict())
-
+        for item in temp:
+            if item[json_id] == check_id:
+                item = req_body.dict()
+                return(item)
+        # appending data to emp_detail
+        temp.append(item)
     with open(filename, 'w') as f:
         json.dump(data, f, indent=4)
 
-
-@app.put('/addUsers/{userid}')
-async def update_user(userid: int, user: Users):
+def update (item, data ):
     pass
+    
 
+
+# 5 . GET A USER
+def get_json(filename, value, check_id,json_id):
+    with open(filename) as json_file:
+        data = json.load(json_file)
+        temp = data[str(value)]
+        for item in temp:
+            if item[json_id] == check_id:
+                return item
+
+
+@app.get('/getUser/{userid}')
+async def get_user(userid: int):
+    return get_json('data/users.json', 'users', userid, 'userId')
+
+@app.get('/getMovie/{movieid}')
+async def get_movie(movieid: int):
+    return get_json('data/movies.json', 'movies', movieid, 'movieId')
+
+@app.get('/getRental/{rentalid}')
+async def get_rental(rentalid: int):
+    return get_json('data/rentals.json', 'rentals', rentalid, 'rentalId')
+
+
+@app.put('/editUsers/{userid}' , response_model = Users)
+async def update_user(userid: int, user: Users):
+    item = get_json('data/users.json', 'users', userid, 'userId')
+    user =  jsonable_encoder(item)
+    
+    return user
+    

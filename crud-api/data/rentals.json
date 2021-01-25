@@ -1,42 +1,42 @@
 {
     "rentals": [
         {
-            "rentId": 1,
+            "rentalId": 1,
             "Owner": "Krish",
             "Leasee": "Lee",
             "phoneNumber": "123456",
             "emailAddress": "krish.lee@learningcontainer.com"
         },
         {
-            "rentId": 2,
+            "rentalId": 2,
             "Owner": "racks",
             "Leasee": "jacson",
             "phoneNumber": "123456",
             "emailAddress": "racks.jacson@learningcontainer.com"
         },
         {
-            "rentId": 3,
+            "rentalId": 3,
             "Owner": "denial",
             "Leasee": "roast",
             "phoneNumber": "33333333",
             "emailAddress": "denial.roast@learningcontainer.com"
         },
         {
-            "rentId": 4,
+            "rentalId": 4,
             "Owner": "devid",
             "Leasee": "neo",
             "phoneNumber": "222222222",
             "emailAddress": "devid.neo@learningcontainer.com"
         },
         {
-            "rentId": 5,
+            "rentalId": 5,
             "Owner": "jone",
             "Leasee": "mac",
             "phoneNumber": "111111111",
             "emailAddress": "jone.mac@learningcontainer.com"
         },
         {
-            "rentId": 42,
+            "rentalId": 42,
             "Owner": "X42",
             "Leasee": "strange",
             "phoneNumber": "21222",

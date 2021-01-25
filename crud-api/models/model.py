@@ -13,11 +13,11 @@ class Users(BaseModel):
 class Movies (BaseModel):
     title:  str
     rank:  int
-    titleId:  int
+    movieId:  int
 
 
 class Rentals(BaseModel):
-    rentId: int
+    rentalId: int
     Owner:  str
     Leasee:  str
     phoneNumber:  Optional[str] = None
