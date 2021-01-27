@@ -41,6 +41,13 @@
             "Leasee": "strange",
             "phoneNumber": "21222",
             "emailAddress": "she@gmail.com"
+        },
+        {
+            "rentalId": 112,
+            "Owner": "racks",
+            "Leasee": "jacson",
+            "phoneNumber": "123456",
+            "emailAddress": "racks.jacson@learningcontainer.com"
         }
     ]
 }

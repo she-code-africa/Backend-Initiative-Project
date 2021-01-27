@@ -20,6 +20,20 @@
             "lastName": "Ore",
             "phoneNumber": "0902233111",
             "emailAddress": "thayehas@gmail.com"
+        },
+        {
+            "userId": 12,
+            "firstName": "Tose",
+            "lastName": "noe",
+            "phoneNumber": "09111",
+            "emailAddress": "thaas@gmail.com"
+        },
+        {
+            "userId": 10,
+            "firstName": "Sene",
+            "lastName": "Pretty",
+            "phoneNumber": "848484",
+            "emailAddress": "tren@gmail.com"
         }
     ]
 }
