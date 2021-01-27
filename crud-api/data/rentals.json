@@ -1,53 +1,58 @@
-{
-    "rentals": [
-        {
-            "rentalId": 1,
-            "Owner": "Krish",
-            "Leasee": "Lee",
-            "phoneNumber": "123456",
-            "emailAddress": "krish.lee@learningcontainer.com"
-        },
-        {
-            "rentalId": 2,
-            "Owner": "racks",
-            "Leasee": "jacson",
-            "phoneNumber": "123456",
-            "emailAddress": "racks.jacson@learningcontainer.com"
-        },
-        {
-            "rentalId": 3,
-            "Owner": "denial",
-            "Leasee": "roast",
-            "phoneNumber": "33333333",
-            "emailAddress": "denial.roast@learningcontainer.com"
-        },
-        {
-            "rentalId": 4,
-            "Owner": "devid",
-            "Leasee": "neo",
-            "phoneNumber": "222222222",
-            "emailAddress": "devid.neo@learningcontainer.com"
-        },
-        {
-            "rentalId": 5,
-            "Owner": "jone",
-            "Leasee": "mac",
-            "phoneNumber": "111111111",
-            "emailAddress": "jone.mac@learningcontainer.com"
-        },
-        {
-            "rentalId": 42,
-            "Owner": "X42",
-            "Leasee": "strange",
-            "phoneNumber": "21222",
-            "emailAddress": "she@gmail.com"
-        },
-        {
-            "rentalId": 112,
-            "Owner": "racks",
-            "Leasee": "jacson",
-            "phoneNumber": "123456",
-            "emailAddress": "racks.jacson@learningcontainer.com"
-        }
-    ]
-}
+[
+    {
+        "rentalId": 1,
+        "Owner": "Krish",
+        "Leasee": "Lee",
+        "phoneNumber": "123456",
+        "emailAddress": "krish.lee@learningcontainer.com"
+    },
+    {
+        "rentalId": 2,
+        "Owner": "racks",
+        "Leasee": "jacson",
+        "phoneNumber": "123456",
+        "emailAddress": "racks.jacson@learningcontainer.com"
+    },
+    {
+        "rentalId": 3,
+        "Owner": "denial",
+        "Leasee": "roast",
+        "phoneNumber": "33333333",
+        "emailAddress": "denial.roast@learningcontainer.com"
+    },
+    {
+        "rentalId": 4,
+        "Owner": "devid",
+        "Leasee": "neo",
+        "phoneNumber": "222222222",
+        "emailAddress": "devid.neo@learningcontainer.com"
+    },
+    {
+        "rentalId": 5,
+        "Owner": "jone",
+        "Leasee": "mac",
+        "phoneNumber": "111111111",
+        "emailAddress": "jone.mac@learningcontainer.com"
+    },
+    {
+        "rentalId": 42,
+        "Owner": "X42",
+        "Leasee": "strange",
+        "phoneNumber": "21222",
+        "emailAddress": "she@gmail.com"
+    },
+    {
+        "rentalId": 211,
+        "Owner": "racks",
+        "Leasee": "jacson",
+        "phoneNumber": "123456",
+        "emailAddress": "racks.jacson@learningcontainer.com"
+    },
+    {
+        "rentalId": 25,
+        "Owner": "SHukurah",
+        "Leasee": "Giwa",
+        "phoneNumber": "2331",
+        "emailAddress": "hw@fmail.com"
+    }
+]

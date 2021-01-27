@@ -1,5 +1,4 @@
-{
-    "users": [
+ [
         {
             "userId": 31,
             "firstName": "sidi",
@@ -36,4 +35,3 @@
             "emailAddress": "tren@gmail.com"
         }
     ]
-}
