@@ -69,7 +69,7 @@ def get_json(filename,check_id, json_id):
         for item in data:
             if item[json_id] == check_id:
                 return item
-    return "Id {} does not exist in {}.json".format(check_id, value)
+    return "Id {} does not exist in json".format(check_id)
 
 
 @app.get("/api/v1/getUser/{userid}")
