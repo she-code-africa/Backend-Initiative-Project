@@ -7,29 +7,26 @@ from models.model import Rentals, Users, Movies
 app = FastAPI()
 
 # read the files:
-with open("data/movies.json") as movies_content:
-    moviesContent = json.load(movies_content)
+def getAll(filename, value):
+    with open(filename) as json_file:
+            data = json.load(json_file)
+            temp = data[str(value)]
+            return temp
 
-with open("data/users.json") as users_content:
-    usersContent = json.load(users_content)
-
-with open("data/rentals.json") as rentals_content:
-    rentalsContent = json.load(rentals_content)
-
-# 1. GET ALL - READ
-@app.get("/movies")
+# 1. GET ALL -  READ  API
+@app.get("/api/v1/allmovies")
 async def allMovies():
-    return [movie for movie in moviesContent]
+    return getAll("data/movies.json", "movies")
 
-@app.get("/users")
+@app.get("/api/v1/allusers")
 async def allUsers():
-    return [user for user in usersContent]
+    return getAll("data/users.json", "users")
 
-@app.get("/rentals")
+@app.get("/api/v1/allrentals")
 async def allRentals():
-    return [rental for rental in rentalsContent]
+    return getAll("data/rentals.json", "rentals")
 
-# 2  CREATE
+# 2  CREATE API
 
 def write_json(filename, value, req_body):
     with open(filename) as json_file:
@@ -41,22 +38,22 @@ def write_json(filename, value, req_body):
     with open(filename, "w") as f:
         json.dump(data, f, indent=4)
 
-@app.post("/addRentals")
+@app.post("/api/v1/addRentals")
 async def create_rental(rental: Rentals):
     write_json("data/rentals.json", "rentals", rental)
     return rental.dict()
 
-@app.post("/addMovies")
+@app.post("/api/v1/addMovies")
 async def create_movies(movie: Movies):
     write_json("data/movies.json", "movies", movie)
     return movie.dict()
 
-@app.post("/addUsers")
+@app.post("/api/v1/addUsers")
 async def create_users(user: Users):
     write_json("data/users.json", "users", user)
     return user.dict()
 
-# 3 . GET A USER
+# 3 . GET A {} API
 def get_json(filename, value, check_id, json_id):
     with open(filename) as json_file:
         data = json.load(json_file)
@@ -65,21 +62,21 @@ def get_json(filename, value, check_id, json_id):
             if item[json_id] == check_id:
                 return item
             else:
-                return "{}  does not exist in {} ".format(json_id, value)
+                return "Id {} does not exist in {}.json".format(check_id, value)
 
-@app.get("/getUser/{userid}")
+@app.get("/api/v1/getUser/{userid}")
 async def get_user(userid: int):
     return get_json("data/users.json", "users", userid, "userId")
 
-@app.get("/getMovie/{movieid}")
+@app.get("/api/v1/getMovie/{movieid}")
 async def get_movie(movieid: int):
     return get_json("data/movies.json", "movies", movieid, "movieId")
 
-@app.get("/getRental/{rentalid}")
+@app.get("/api/v1/getRental/{rentalid}")
 async def get_rental(rentalid: int):
     return get_json("data/rentals.json", "rentals", rentalid, "rentalId")
 
-# 4. PUT
+# 4. PUT API
 
 def update_json(filename, value, json_id, value_id, updates):
     with open(filename) as json_file:
@@ -94,22 +91,22 @@ def update_json(filename, value, json_id, value_id, updates):
         json.dump(data, f, indent=4)
     return updates
 
-@app.put("/editMovies/{movieid}", response_model=Movies)
+@app.put("/api/v1/editMovies/{movieid}", response_model=Movies)
 async def update_movie(movieid: int, movie: Movies):
     return update_json("data/movies.json", "movies", "movieId", movieid, movie.dict())
 
-@app.put("/editUsers/{userid}", response_model=Users)
+@app.put("/api/v1/editUsers/{userid}", response_model=Users)
 async def update_user(userid: int, user: Users):
     return update_json("data/users.json", "users", "userId", userid, user.dict())
 
-@app.put("/editRentals/{rentalid}", response_model=Rentals)
+@app.put("/api/v1/editRentals/{rentalid}", response_model=Rentals)
 async def update_rental(rentalid: int, rental: Rentals):
     return update_json(
         "data/rentals.json", "rentals", "rentalId", rentalid, rental.dict()
     )
 
 
-# 5. DELETE USER
+# 5. DELETE API
 
 def delete_json(filename, value, json_id, value_id):
     with open(filename) as json_file:
@@ -124,14 +121,14 @@ def delete_json(filename, value, json_id, value_id):
         json.dump(data, f, indent=4)
     return "deleted"
 
-@app.delete("/delMovies/{movieid}")
+@app.delete("/api/v1/delMovies/{movieid}")
 async def delete_movie(movieid: int):
     return delete_json("data/movies.json", "movies", "movieId", movieid)
 
-@app.delete("/delUsers/{userid}")
+@app.delete("/api/v1/delUsers/{userid}")
 async def delete_user(userid: int):
     return delete_json("data/users.json", "users", "userId", userid)
 
-@app.delete("/delRentals/{rentalid}")
+@app.delete("/api/v1/delRentals/{rentalid}")
 async def delete_rental(rentalid: int):
     return delete_json("data/rentals.json", "rentals", "rentalId", rentalid)
