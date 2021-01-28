@@ -1,8 +1,8 @@
 [
     {
-        "title": "The Good, the Bad and the Ugly",
-        "rank": 5,
-        "movieId": 54
+        "title": "Sweet Life",
+        "rank": 1,
+        "movieId": 101
     },
     {
         "title": "The Dark Knight",
@@ -10,9 +10,9 @@
         "movieId": 44
     },
     {
-        "title": "12 Angry Birds",
-        "rank": 7,
-        "movieId": 15
+        "title": "Sweet Life",
+        "rank": 1,
+        "movieId": 22
     },
     {
         "title": "Schindler's List",
@@ -30,13 +30,8 @@
         "movieId": 31
     },
     {
-        "title": "Dreanker",
+        "title": "Sweet Life",
         "rank": 1,
-        "movieId": 1222
-    },
-    {
-        "title": "WXssr",
-        "rank": 1,
-        "movieId": 11201
+        "movieId": 22
     }
 ]

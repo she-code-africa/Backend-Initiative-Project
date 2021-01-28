@@ -31,50 +31,50 @@ async def allRentals():
 
 # 2  CREATE API
 
-
-def write_json(filename, req_body):
+def write_json(filename, req_body, model):
     with open(filename) as json_file:
         data = json.load(json_file)
-        # appending data to emp_details
+
+        # appending data 
         data.append(req_body.dict())
 
     with open(filename, "w") as f:
         json.dump(data, f, indent=4)
-    return "Added new entry", req_body.dict()
+    return {model:req_body.dict()}
 
 
 @app.post("/api/v1/addRentals")
 async def create_rental(rental: Rentals):
-    return write_json("data/rentals.json", rental)
+    return write_json("data/rentals.json", rental, 'Rental')
     # return rental.dict()
 
 
 @app.post("/api/v1/addMovies")
 async def create_movies(movie: Movies):
-    return write_json("data/movies.json", movie)
+    return write_json("data/movies.json", movie, 'Movie')
     # return movie.dict()
 
 
 @app.post("/api/v1/addUsers")
 async def create_users(user: Users):
-    return write_json("data/users.json", user)
+    return write_json("data/users.json", user, 'User')
     # return user.dict()
 
 
 # 3 . GET A {} API
-def get_json(filename,check_id, json_id):
+def get_json(filename, check_id, json_id):
     with open(filename) as json_file:
         data = json.load(json_file)
 
         for item in data:
             if item[json_id] == check_id:
-                return item
-    return "Id {} does not exist in json".format(check_id)
+                return {"msg":"Succesfully retrieved {}".format(check_id), "Retrieved Data":item}
+    return {"Error Message":"Id {} does not exist in json".format(check_id)}
 
 
 @app.get("/api/v1/getUser/{userid}")
 async def get_user(userid: int):
-    return get_json("data/users.json",  userid, "userId")
+    return get_json("data/users.json", userid, "userId")
 
 
 @app.get("/api/v1/getMovie/{movieid}")
@@ -89,55 +89,56 @@ async def get_rental(rentalid: int):
 
 # 4. PUT API
 
-
 def update_json(filename, json_id, check_id, updates):
     with open(filename) as json_file:
+      
         data = json.load(json_file)
         for item in data:
             if item[json_id] == check_id:
                 data[data.index(item)] = updates
-                respon = updates
-            else:
-                respon = "Id {} does not exist in .json ".format(check_id)
+                
+                respon = {"msg":"Updated from Id {}".format(check_id), "Update":updates}
+            elif item[json_id] != check_id:
+                respon = {"Error Message":"Id {} does not exist in .json ".format(check_id)}
     with open(filename, "w") as f:
         json.dump(data, f, indent=4)
-        return updates
+
+    return respon
 
 
-@app.put("/api/v1/editMovies/{movieid}", response_model=Movies)
+@app.put("/api/v1/editMovies/{movieid}")
 async def update_movie(movieid: int, movie: Movies):
     return update_json("data/movies.json", "movieId", movieid, movie.dict())
+    
 
 
-@app.put("/api/v1/editUsers/{userid}", response_model=Users)
+@app.put("/api/v1/editUsers/{userid}")
 async def update_user(userid: int, user: Users):
     return update_json("data/users.json", "userId", userid, user.dict())
 
 
-@app.put("/api/v1/editRentals/{rentalid}", response_model=Rentals)
+@app.put("/api/v1/editRentals/{rentalid}")
 async def update_rental(rentalid: int, rental: Rentals):
-    return update_json("data/rentals.json",  "rentalId", rentalid, rental.dict())
-
+    return update_json("data/rentals.json", "rentalId", rentalid, rental.dict())
 
 # 5. DELETE API
 
-
-def delete_json(filename,json_id, value_id):
+def delete_json(filename, json_id, value_id):
     with open(filename) as json_file:
         data = json.load(json_file)
-
         for item in data:
             if item[str(json_id)] == value_id:
                 del data[data.index(item)]
+                display = {'msg':'deleted', 'Deleted': item}
+            elif item[str(json_id)] != value_id:
+                display = {'msg':'not deleted', 'Does not Exist': value_id}
     with open(filename, "w") as f:
         json.dump(data, f, indent=4)
-    return "deleted "
-    # return "{}  does not exist in {} ".format(value_id, value)
-
+    return display
 
 @app.delete("/api/v1/delMovies/{movieid}")
 async def delete_movie(movieid: int):
-    return delete_json("data/movies.json",  "movieId", movieid)
+    return delete_json("data/movies.json", "movieId", movieid)
 
 
 @app.delete("/api/v1/delUsers/{userid}")

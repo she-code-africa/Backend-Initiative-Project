@@ -7,7 +7,7 @@
         "emailAddress": "krish.lee@learningcontainer.com"
     },
     {
-        "rentalId": 2,
+        "rentalId": 234,
         "Owner": "racks",
         "Leasee": "jacson",
         "phoneNumber": "123456",
@@ -49,10 +49,10 @@
         "emailAddress": "racks.jacson@learningcontainer.com"
     },
     {
-        "rentalId": 25,
-        "Owner": "SHukurah",
-        "Leasee": "Giwa",
-        "phoneNumber": "2331",
-        "emailAddress": "hw@fmail.com"
+        "rentalId": 23,
+        "Owner": "racks",
+        "Leasee": "jacson",
+        "phoneNumber": "123456",
+        "emailAddress": "racks.jacson@learningcontainer.com"
     }
 ]
