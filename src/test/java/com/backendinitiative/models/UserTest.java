@@ -14,8 +14,8 @@ class UserTest {
 
     @BeforeEach
     void setUp() {
-        firstUser = new User("Amaka", "Mbah", "ami@gmail.com");
-        secondUser = new User("Janet", "Nkwocha", "jani@gmail.com");
+        firstUser = new User(1,"Amaka", "Mbah", "ami@gmail.com");
+        secondUser = new User(2,"Janet", "Nkwocha", "jani@gmail.com");
     }
 
     @AfterEach

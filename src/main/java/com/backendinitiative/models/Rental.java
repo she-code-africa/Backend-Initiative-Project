@@ -6,14 +6,13 @@ import java.time.LocalDate;
 
 @Data
 public class Rental {
-    private static int rentalCountId = 1;
     private Integer rentalId;
     private LocalDate rentalDate;
     private Movie rentedMovie;
     private User userRenting;
 
-    public Rental(LocalDate rentalDate, Movie rentedMovie, User userRenting) {
-        this.rentalId = rentalCountId++;
+    public Rental(Integer rentalId, LocalDate rentalDate, Movie rentedMovie, User userRenting) {
+        this.rentalId = rentalId;
         this.rentalDate = rentalDate;
         this.rentedMovie = rentedMovie;
         this.userRenting = userRenting;

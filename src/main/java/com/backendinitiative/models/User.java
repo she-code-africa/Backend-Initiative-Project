@@ -4,14 +4,13 @@ import lombok.Data;
 
 @Data
 public class User {
-    private static int userIdCount = 1;
     private Integer userId;
     private String firstName;
     private String lastName;
     private String email;
 
-    public User(String firstName, String lastName, String email) {
-        this.userId = userIdCount++;
+    public User(Integer userId,String firstName, String lastName, String email) {
+        this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

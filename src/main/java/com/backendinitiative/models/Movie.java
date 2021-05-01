@@ -4,13 +4,12 @@ import lombok.Data;
 
 @Data
 public class Movie {
-    private static int movieIdCount = 1;
-    private int movieId;
+    private Integer movieId;
     private String movieName;
     private int yearOfRelease;
 
-    public Movie(String movieName, int yearOfRelease) {
-        this.movieId = movieIdCount++;
+    public Movie(Integer movieId, String movieName, int yearOfRelease) {
+        this.movieId = movieId;
         this.movieName = movieName;
         this.yearOfRelease = yearOfRelease;
     }
