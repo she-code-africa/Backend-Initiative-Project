@@ -1,28 +1,17 @@
 package com.backendinitiative.models;
 
 import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
+@Document(collection="users")
 public class User {
-    private Integer userId;
+    @Id
+    private String userId;
+    private String username;
     private String firstName;
     private String lastName;
     private String email;
-
-    public User(Integer userId,String firstName, String lastName, String email) {
-        this.userId = userId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
+    private String password;
 }

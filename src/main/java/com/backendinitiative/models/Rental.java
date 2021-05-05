@@ -1,30 +1,18 @@
 package com.backendinitiative.models;
 
 import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 
 @Data
+@Document(collection="rentals")
 public class Rental {
-    private Integer rentalId;
+    @Id
+    private String rentalId;
     private LocalDate rentalDate;
     private Movie rentedMovie;
     private User userRenting;
 
-    public Rental(Integer rentalId, LocalDate rentalDate, Movie rentedMovie, User userRenting) {
-        this.rentalId = rentalId;
-        this.rentalDate = rentalDate;
-        this.rentedMovie = rentedMovie;
-        this.userRenting = userRenting;
-    }
-
-    @Override
-    public String toString() {
-        return "Rental{" +
-                "rentalId=" + rentalId +
-                ", rentalDate=" + rentalDate +
-                ", rentedMovie=" + rentedMovie +
-                ", userRenting=" + userRenting +
-                '}';
-    }
 }
