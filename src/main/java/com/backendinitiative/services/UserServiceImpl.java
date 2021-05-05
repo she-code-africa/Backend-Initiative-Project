@@ -6,7 +6,6 @@ import com.backendinitiative.exceptions.UserNotFoundException;
 import com.backendinitiative.models.User;
 import com.backendinitiative.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,9 +14,6 @@ import java.util.List;
 public class UserServiceImpl implements UserService{
     @Autowired
     private UserRepo userDb;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
 
     /**
     * Create an instance of user model
@@ -41,11 +37,11 @@ public class UserServiceImpl implements UserService{
         modelUser.setLastName(newUser.getLastName());
         modelUser.setEmail(newUser.getEmail());
         modelUser.setPassword(newUser.getPassword());
-        addUserToDatabase(modelUser);
+        saveToDatabase(modelUser);
         return modelUser;
     }
 
-    private void addUserToDatabase(User user){
+    private void saveToDatabase(User user){
         userDb.save(user);
     }
 
@@ -70,6 +66,28 @@ public class UserServiceImpl implements UserService{
      * */
     @Override
     public User getOneUser(String userId) throws UserNotFoundException {
-        return null;
+        if(userDb.findByUserId(userId).isEmpty()) throw new UserNotFoundException("User not found");
+        return userDb.findByUserId(userId).get();
     }
+
+    /**
+     * Updates user with their id
+     * and save in the database
+     *
+     * @author Amaka
+     * @param userId
+     * @return user updated
+     * */
+    @Override
+    public User updateUser(String userId, UserDto updateUser) throws UserNotFoundException {
+        return userDb.findByUserId(userId).map(user -> {
+            user.setFirstName(updateUser.getFirstName());
+            user.setLastName(updateUser.getLastName());
+            user.setEmail(updateUser.getEmail());
+            user.setPassword(updateUser.getPassword());
+            saveToDatabase(user);
+            return user;
+        }).orElseThrow(() -> new UserNotFoundException("User does not exist"));
+    }
+
 }

@@ -13,4 +13,6 @@ public interface UserService {
     List<User> getAllUsers();
 
     User getOneUser(String userId) throws UserNotFoundException;
+
+    User updateUser(String userId, UserDto updatedUser) throws UserNotFoundException;
 }

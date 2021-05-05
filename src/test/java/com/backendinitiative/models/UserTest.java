@@ -39,7 +39,7 @@ class UserTest {
 
         userDb.save(secondUser);
 
-        assertEquals(2, userDb.count());
+        assertEquals(3, userDb.count());
     }
 
     @Test
