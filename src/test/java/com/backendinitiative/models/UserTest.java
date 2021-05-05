@@ -21,7 +21,6 @@ class UserTest {
     @Test
     void shouldCreateUser(){
         User firstUser = new User();
-        firstUser.setUsername("babe222");
         firstUser.setFirstName("Amaka");
         firstUser.setLastName("Mbah");
         firstUser.setEmail("amy@gmail.com");
@@ -33,30 +32,36 @@ class UserTest {
     @Test
     void shouldSaveNewUserToDatabase(){
         User secondUser = new User();
-        secondUser.setUsername("babe222");
         secondUser.setFirstName("Amaka");
         secondUser.setLastName("Mbah");
         secondUser.setEmail("amy@gmail.com");
         secondUser.setPassword("babe2211");
 
         userDb.save(secondUser);
-        assertEquals(1, userDb.count());
+
+        assertEquals(2, userDb.count());
     }
 
     @Test
     void shouldThrowAnErrorIfUserAlreadyExists(){
         UserDto secondUser = new UserDto();
-        secondUser.setUsername("babe222");
         secondUser.setFirstName("Amaka");
         secondUser.setLastName("Mbah");
         secondUser.setEmail("amy@gmail.com");
         secondUser.setPassword("babe2211");
 
+        UserDto thirdUser = new UserDto();
+        thirdUser.setFirstName("Fina");
+        thirdUser.setLastName("Jonah");
+        thirdUser.setEmail("finny@gmail.com");
+        thirdUser.setPassword("finn234");
+
         try{
-            userService.createNewUser(secondUser);
+//            userService.createNewUser(secondUser);
+            userService.createNewUser(thirdUser);
         }catch(EmailExistsException e){
             e.getLocalizedMessage();
         }
-        assertEquals(1, userDb.count());
+        assertEquals(2, userDb.count());
     }
 }
