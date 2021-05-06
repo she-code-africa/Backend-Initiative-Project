@@ -50,13 +50,26 @@ public class Usercontroller {
     }
 
     @PutMapping("/users/{userId}")
-    public ResponseEntity<?> updateUser(@PathVariable("userId") @RequestBody String userId, UserDto updatedUser){
-        User foundUser;
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public ResponseTransfer updateUser(@PathVariable("userId") @RequestBody String userId, UserDto updatedUser){
         try{
-            foundUser = userService.updateUser(userId, updatedUser);
+            userService.updateUser(userId, updatedUser);
         }catch(UserNotFoundException ex){
-            return new ResponseEntity<>(ex.getLocalizedMessage(), HttpStatus.ALREADY_REPORTED);
+            return new ResponseTransfer(ex.getLocalizedMessage());
         }
-        return new ResponseEntity<>(foundUser, HttpStatus.OK);
+        return new ResponseTransfer("User updated successfully");
+    }
+
+    @DeleteMapping("/users/{userId}")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public ResponseTransfer deleteUser(@PathVariable("userId") @RequestBody String userId){
+        try{
+            userService.deleteUser(userId);
+        }catch(UserNotFoundException ex){
+            return new ResponseTransfer(ex.getLocalizedMessage());
+        }
+        return new ResponseTransfer("User deleted successfully");
     }
 }

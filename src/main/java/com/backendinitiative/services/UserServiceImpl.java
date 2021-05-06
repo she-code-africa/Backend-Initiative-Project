@@ -90,4 +90,14 @@ public class UserServiceImpl implements UserService{
         }).orElseThrow(() -> new UserNotFoundException("User does not exist"));
     }
 
+    /**
+     * Deletes a user with their id
+     *
+     * @author Amaka
+     * @param userId
+     * */
+    public void deleteUser(String userId) throws UserNotFoundException{
+        if(userDb.findByUserId(userId).isEmpty()) throw new UserNotFoundException("User does not exist");
+        userDb.deleteById(userId);
+    }
 }
