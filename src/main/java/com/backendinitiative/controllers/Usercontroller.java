@@ -5,6 +5,7 @@ import com.backendinitiative.exceptions.EmailExistsException;
 import com.backendinitiative.exceptions.UserNotFoundException;
 import com.backendinitiative.models.User;
 import com.backendinitiative.services.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1")
+@Slf4j
 public class Usercontroller {
 
     @Autowired
@@ -52,7 +54,9 @@ public class Usercontroller {
     @PutMapping("/users/{userId}")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
-    public ResponseTransfer updateUser(@PathVariable("userId") @RequestBody String userId, UserDto updatedUser){
+    public ResponseTransfer updateUser(@PathVariable String userId, @RequestBody User updatedUser){
+
+        log.info("updated user dto --> {}", updatedUser);
         try{
             userService.updateUser(userId, updatedUser);
         }catch(UserNotFoundException ex){

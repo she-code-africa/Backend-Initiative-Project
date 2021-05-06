@@ -5,12 +5,15 @@ import com.backendinitiative.exceptions.EmailExistsException;
 import com.backendinitiative.exceptions.UserNotFoundException;
 import com.backendinitiative.models.User;
 import com.backendinitiative.repository.UserRepo;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
+@Slf4j
 public class UserServiceImpl implements UserService{
     @Autowired
     private UserRepo userDb;
@@ -79,15 +82,19 @@ public class UserServiceImpl implements UserService{
      * @return user updated
      * */
     @Override
-    public User updateUser(String userId, UserDto updateUser) throws UserNotFoundException {
-        return userDb.findByUserId(userId).map(user -> {
-            user.setFirstName(updateUser.getFirstName());
-            user.setLastName(updateUser.getLastName());
-            user.setEmail(updateUser.getEmail());
-            user.setPassword(updateUser.getPassword());
-            saveToDatabase(user);
-            return user;
-        }).orElseThrow(() -> new UserNotFoundException("User does not exist"));
+    public void updateUser(String userId, User updateUser) throws UserNotFoundException {
+        Optional<User> foundUser = Optional.ofNullable(userDb.findByUserId(userId)
+                .orElseThrow(() -> new UserNotFoundException("User does not exist")));
+
+
+        foundUser.ifPresent(user -> {
+             if(updateUser.getFirstName() != null) user.setFirstName(updateUser.getFirstName());
+             if(updateUser.getLastName() != null) user.setLastName(updateUser.getLastName());
+             if(updateUser.getEmail() != null) user.setEmail(updateUser.getEmail());
+             if(updateUser.getPassword() != null) user.setPassword(updateUser.getPassword());
+
+             saveToDatabase(user);
+        });
     }
 
     /**
