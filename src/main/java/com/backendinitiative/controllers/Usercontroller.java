@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -27,8 +28,8 @@ public class Usercontroller {
     public ResponseTransfer createNewUser(@RequestBody UserDto newUser){
         try{
             userService.createNewUser(newUser);
-        }catch(EmailExistsException emailExists){
-            return new ResponseTransfer(emailExists.getLocalizedMessage());
+        }catch(EmailExistsException ex){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, ex.getLocalizedMessage());
         }
         return new ResponseTransfer("Registration successful");
     }
@@ -46,7 +47,7 @@ public class Usercontroller {
         try{
             foundUser = userService.getOneUser(userId);
         }catch(UserNotFoundException ex){
-            return new ResponseEntity<>(ex.getLocalizedMessage(), HttpStatus.ALREADY_REPORTED);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, ex.getLocalizedMessage());
         }
         return new ResponseEntity<>(foundUser, HttpStatus.OK);
     }
@@ -55,12 +56,10 @@ public class Usercontroller {
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public ResponseTransfer updateUser(@PathVariable String userId, @RequestBody User updatedUser){
-//
-//        log.info("updated user dto --> {}", updatedUser);
         try{
             userService.updateUser(userId, updatedUser);
         }catch(UserNotFoundException ex){
-            return new ResponseTransfer(ex.getLocalizedMessage());
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, ex.getLocalizedMessage());
         }
         return new ResponseTransfer("User updated successfully");
     }
@@ -72,7 +71,7 @@ public class Usercontroller {
         try{
             userService.deleteUser(userId);
         }catch(UserNotFoundException ex){
-            return new ResponseTransfer(ex.getLocalizedMessage());
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, ex.getLocalizedMessage());
         }
         return new ResponseTransfer("User deleted successfully");
     }

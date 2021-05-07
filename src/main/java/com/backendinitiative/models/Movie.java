@@ -11,5 +11,6 @@ public class Movie {
     private String movieId;
     private String movieName;
     private int yearOfRelease;
+
 }
 
