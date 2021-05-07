@@ -79,7 +79,6 @@ public class UserServiceImpl implements UserService{
      *
      * @author Amaka
      * @param userId
-     * @return user updated
      * */
     @Override
     public void updateUser(String userId, User updateUser) throws UserNotFoundException {

@@ -55,8 +55,8 @@ public class Usercontroller {
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public ResponseTransfer updateUser(@PathVariable String userId, @RequestBody User updatedUser){
-
-        log.info("updated user dto --> {}", updatedUser);
+//
+//        log.info("updated user dto --> {}", updatedUser);
         try{
             userService.updateUser(userId, updatedUser);
         }catch(UserNotFoundException ex){
