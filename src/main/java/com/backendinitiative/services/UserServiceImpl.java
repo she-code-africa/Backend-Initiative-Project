@@ -82,7 +82,7 @@ public class UserServiceImpl implements UserService{
      * */
     @Override
     public void updateUser(String userId, User updateUser) throws UserNotFoundException {
-        Optional<User> foundUser = Optional.ofNullable(userDb.findByUserId(userId)
+        Optional<User> foundUser = Optional.of(userDb.findByUserId(userId)
                 .orElseThrow(() -> new UserNotFoundException("User does not exist")));
 
 

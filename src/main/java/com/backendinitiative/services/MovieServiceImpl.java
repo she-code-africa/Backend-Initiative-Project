@@ -33,9 +33,9 @@ public class MovieServiceImpl implements MovieService{
     public Movie addMovie(MovieDto newMovieDto) throws MovieExistsException {
         Movie newMovie = new Movie();
 
-        if(movieDb.findMovieByMovieName(newMovieDto.getMovieName()).isPresent()) throw new MovieExistsException("Movie already exists");
+        if(movieDb.findMovieByMovieName(newMovieDto.getMovieName().toLowerCase()).isPresent()) throw new MovieExistsException("Movie already exists");
 
-        newMovie.setMovieName(newMovieDto.getMovieName());
+        newMovie.setMovieName(newMovieDto.getMovieName().toLowerCase());
         newMovie.setYearOfRelease(newMovieDto.getYearOfRelease());
         saveMovieToDatabase(newMovie);
         return newMovie;
@@ -78,7 +78,7 @@ public class MovieServiceImpl implements MovieService{
      * */
     @Override
     public void updateMovie(String movieId, Movie updateMovie) throws MovieNotFoundException {
-        Optional<Movie> foundMovie = Optional.ofNullable(movieDb.findByMovieId(movieId)
+        Optional<Movie> foundMovie = Optional.of(movieDb.findByMovieId(movieId)
                 .orElseThrow(() -> new MovieNotFoundException("Movie does not exist")));
 
         foundMovie.ifPresent(movie -> {
@@ -86,7 +86,6 @@ public class MovieServiceImpl implements MovieService{
             if (updateMovie.getYearOfRelease() != 0) movie.setYearOfRelease(updateMovie.getYearOfRelease());
 
             saveMovieToDatabase(movie);
-
         });
     }
 

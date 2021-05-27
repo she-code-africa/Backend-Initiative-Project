@@ -15,33 +15,33 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1")
+@RequestMapping("api/v1/users/")
 @Slf4j
 public class Usercontroller {
 
     @Autowired
     private UserService userService;
 
-    @PostMapping("/users/create")
+    @PostMapping("create")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public ResponseTransfer createNewUser(@RequestBody UserDto newUser){
         try{
             userService.createNewUser(newUser);
         }catch(EmailExistsException ex){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, ex.getLocalizedMessage());
+            throw new ResponseStatusException(HttpStatus.CONFLICT, ex.getLocalizedMessage());
         }
         return new ResponseTransfer("Registration successful");
     }
 
-    @GetMapping("/users/all")
+    @GetMapping("all")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public List<User> getAllUsers(){
         return userService.getAllUsers();
     }
 
-    @GetMapping("/users/{userId}")
+    @GetMapping("{userId}")
     public ResponseEntity<?> getOneUser(@PathVariable("userId") @RequestBody String userId){
         User foundUser;
         try{
@@ -52,7 +52,7 @@ public class Usercontroller {
         return new ResponseEntity<>(foundUser, HttpStatus.OK);
     }
 
-    @PutMapping("/users/{userId}")
+    @PutMapping("{userId}")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public ResponseTransfer updateUser(@PathVariable String userId, @RequestBody User updatedUser){
@@ -64,7 +64,7 @@ public class Usercontroller {
         return new ResponseTransfer("User updated successfully");
     }
 
-    @DeleteMapping("/users/{userId}")
+    @DeleteMapping("{userId}")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public ResponseTransfer deleteUser(@PathVariable("userId") @RequestBody String userId){
