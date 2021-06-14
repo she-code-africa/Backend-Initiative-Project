@@ -18,6 +18,12 @@ To do that, you need to implement the following:
   - Adverts, if subscribed 
   - Any other useful message you may think of 
 
+### Resources
+- Redis
+  - https://blog.logrocket.com/guide-to-fully-understanding-redis/
+  - https://www.ionos.com/digitalguide/hosting/technical-matters/redis-tutorial/
+- RabbitMQ
+
 ### Submission
 Publish the APIs with Postman and share this link too, do not forget to include the link to your level five task branch.
 
