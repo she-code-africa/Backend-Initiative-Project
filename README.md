@@ -35,5 +35,5 @@ Submission is via this link: https://docs.google.com/forms/d/e/1FAIpQLSckJcKk0a3
 - Redis
   - https://blog.logrocket.com/guide-to-fully-understanding-redis/
   - https://www.ionos.com/digitalguide/hosting/technical-matters/redis-tutorial/
-
+  - Redis for python: https://www.youtube.com/watch?v=_8lJ5lp8P0U
 ## Goodluck everyone and let's all have a wonderful week!!!!
