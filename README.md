@@ -15,6 +15,9 @@ Your super hero job, this time-around is to ensure that no unauthorised or unaut
 Extra point:
 1. You may implement password forgotten/reset password feature
 
+Resource:
+- https://www.okta.com/identity-101/authentication-vs-authorization/
+
 Submission: Publish the APIs with Postman and share this link too, do not forget to include the link to your level three task branch.
 
 Reviews and promotions will be done every 2 weeks.
