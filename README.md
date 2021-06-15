@@ -23,6 +23,7 @@ To do that, you need to implement the following:
   - https://blog.logrocket.com/guide-to-fully-understanding-redis/
   - https://www.ionos.com/digitalguide/hosting/technical-matters/redis-tutorial/
 - RabbitMQ
+  - https://spring.io/guides/gs/messaging-rabbitmq/
 
 ### Submission
 Publish the APIs with Postman and share this link too, do not forget to include the link to your level five task branch.
