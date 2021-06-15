@@ -7,6 +7,11 @@ No database involved, just a server.
 
 The endpoints will be for Users, Movies, Rentals.
 
-Submission: Publish the APIs with Postman and share this too, do not forget to include the link to your level one task branch.
+## Resource
+- NodeJS: https://www.callicoder.com/node-js-express-mongodb-restful-crud-api-tutorial/
+- SpringBoot: https://auth0.com/blog/spring-boot-java-tutorial-build-a-crud-api/
+
+## Submission 
+Publish the APIs with Postman and share this too, do not forget to include the link to your level one task branch.
 
 Reviews will be done on Saturdays.
